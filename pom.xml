@@ -40,6 +40,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+        <distributionManagement>
+                <repository>
+                        <id>mvn.skalio.net</id>
+                        <!-- hosted at web2.c03.skalio.net -->
+                        <url>scpexe://jenkins@web2.c03.skalio.net/srv/www/mvn.skalio.net/htdocs/repository</url>
+                </repository>
+        </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -48,4 +56,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+        <build>
+                <extensions>
+                        <!-- Enabling the use of SSH for mvn deploy -->
+                        <extension>
+                                <groupId>org.apache.maven.wagon</groupId>
+                                <artifactId>wagon-ssh-external</artifactId>
+                                <version>3.2.0</version>
+                        </extension>
+                </extensions>
+	</build>
 </project>
